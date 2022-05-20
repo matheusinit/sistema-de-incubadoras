@@ -39,4 +39,3 @@ Desenvolver um sistema básico com sistema de autenticação e autorização que
  + Interface focada na experiência do usuário
  + Separation of concerns (Separação de preocupações)
     - Utilização de um sistema distribuído
- + 
