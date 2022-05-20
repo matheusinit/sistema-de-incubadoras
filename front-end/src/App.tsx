@@ -1,10 +1,9 @@
 import React from 'react';
 import './index.css'
+import Registration from './pages/Registration';
 
 function App() {
-  return (
-    <div>Hello World</div>
-  );
+  return <Registration />
 }
 
 export default App;
