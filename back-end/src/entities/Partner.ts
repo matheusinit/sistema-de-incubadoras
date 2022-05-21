@@ -3,21 +3,15 @@ import { v4 as uuidv4 } from 'uuid'
 import { Company } from './Company'
 
 @Entity()
-export class Invoice {
+export class Partner {
   @PrimaryColumn()
   id: string
 
   @Column()
-  month: number
+  name: string
 
-  @Column()
-  year: number
-
-  @ManyToOne(() => Company, (company) => company.invoices)
+  @ManyToOne(() => Company, (company) => company.partners)
   company: Company
-
-  @Column()
-  total: number
 
   constructor () {
     this.id = uuidv4()

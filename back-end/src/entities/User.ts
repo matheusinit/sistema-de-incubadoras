@@ -1,25 +1,18 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, PrimaryColumn } from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
 
 @Entity()
-export class User extends BaseEntity {
-  @PrimaryGeneratedColumn()
+export class User {
+  @PrimaryColumn()
   id: string
 
   @Column()
-  login: string = ''
+  login: string
 
   @Column()
-  password: string = ''
-
-  @Column()
-  isAdmin: boolean = false
-
-  @Column()
-  isActivated: boolean = true
+  password: string
 
   constructor () {
-    super()
     this.id = uuidv4()
   }
 }

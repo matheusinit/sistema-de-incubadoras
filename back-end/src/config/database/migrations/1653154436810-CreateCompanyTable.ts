@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm'
 
-export class CreateCompanyTable1653045368699 implements MigrationInterface {
+export class CreateCompanyTable1653154436810 implements MigrationInterface {
   public async up (queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(new Table({
       name: 'company',
@@ -20,7 +20,8 @@ export class CreateCompanyTable1653045368699 implements MigrationInterface {
         },
         {
           name: 'tradeName',
-          type: 'varchar'
+          type: 'varchar',
+          isNullable: true
         },
         {
           name: 'businessArea',
@@ -28,7 +29,8 @@ export class CreateCompanyTable1653045368699 implements MigrationInterface {
         },
         {
           name: 'timeInMarket',
-          type: 'int'
+          type: 'int',
+          isNullable: true
         },
         {
           name: 'shareCapital',
@@ -36,15 +38,18 @@ export class CreateCompanyTable1653045368699 implements MigrationInterface {
         },
         {
           name: 'employeesCLTQuantity',
-          type: 'int'
+          type: 'int',
+          isNullable: true
         },
         {
           name: 'outsorcedEmployeeQuantity',
-          type: 'int'
+          type: 'int',
+          isNullable: true
         },
         {
           name: 'internQuantity',
-          type: 'int'
+          type: 'int',
+          isNullable: true
         },
         {
           name: 'partnerQuantity',
@@ -52,27 +57,33 @@ export class CreateCompanyTable1653045368699 implements MigrationInterface {
         },
         {
           name: 'website',
-          type: 'varchar'
+          type: 'varchar',
+          isNullable: true
         },
         {
           name: 'instagram',
-          type: 'varchar'
+          type: 'varchar',
+          isNullable: true
         },
         {
           name: 'facebook',
-          type: 'varchar'
+          type: 'varchar',
+          isNullable: true
         },
         {
           name: 'twitter',
-          type: 'varchar'
+          type: 'varchar',
+          isNullable: true
         },
         {
           name: 'linkedin',
-          type: 'varchar'
+          type: 'varchar',
+          isNullable: true
         },
         {
           name: 'whatsapp',
-          type: 'varchar'
+          type: 'varchar',
+          isNullable: true
         },
         {
           name: 'email',

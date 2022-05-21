@@ -1,82 +1,71 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, OneToMany, PrimaryColumn } from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
 import { Invoice } from './Invoice'
+import { Partner } from './Partner'
 
 @Entity()
-export class Company extends BaseEntity {
-  @PrimaryGeneratedColumn()
+export class Company {
+  @PrimaryColumn()
   id: string
 
   @Column()
-  cnpj: string = ''
+  cnpj: string
 
-  // Razão social
-  @Column()
-  corporateName: string = ''
-
-  // Nome fantasia
-  @Column()
-  tradeName: string = ''
-
-  // Área de atuação
-  @Column()
-  businessArea: string = ''
-
-  // Tempo de mercado (em meses)
-  @Column()
-  timeInMarket: number = 0
-
-  // Capital social
-  @Column()
-  shareCapital: number = 0
-
-  // Quantidade de empregados CLT
-  @Column()
-  employeesCLTQuantity: number = 0
-
-  // Quantidade de empregados tercerizados
-  @Column()
-  outsorcedEmployeeQuantity: number = 0
-
-  // Quantidade de estagiários
-  @Column()
-  internQuantity: number = 0
-
-  // Quantidade de sócio
-  @Column()
-  partnerQuantity: number = 0
-
-  // Sócios (um-pra-muitos)
-  @Column()
-  partners = ''
-
-  // Contatos
-  @Column()
-  website: string = ''
-
-  @Column()
-  instagram: string = ''
-
-  @Column()
-  facebook: string = ''
-
-  @Column()
-  twitter: string = ''
-
-  @Column()
-  linkedin: string = ''
-
-  @Column()
-  whatsapp: string = ''
-
-  @Column()
-  email: string = ''
+  @OneToMany(() => Partner, (partner) => partner.company)
+  partners: Partner[]
 
   @OneToMany(() => Invoice, (invoice) => invoice.company)
-  invoices?: Invoice[]
+  invoices: Invoice[]
+
+  @Column()
+  corporateName: string
+
+  @Column({ nullable: true })
+  tradeName: string
+
+  @Column()
+  businessArea: string
+
+  @Column({ nullable: true })
+  timeInMarket: number
+
+  @Column()
+  shareCapital: number
+
+  @Column({ nullable: true })
+  employeesCLTQuantity: number
+
+  @Column({ nullable: true })
+  outsorcedEmployeeQuantity: number
+
+  @Column({ nullable: true })
+  internQuantity: number
+
+  @Column()
+  partnerQuantity: number
+
+  @Column({ nullable: true })
+  website: string
+
+  @Column({ nullable: true })
+  instagram: string
+
+  @Column({ nullable: true })
+  facebook: string
+
+  @Column({ nullable: true })
+  twitter: string
+
+  @Column({ nullable: true })
+  linkedin: string
+
+  @Column({ nullable: true })
+  whatsapp: string
+
+  @Column()
+  email: string
 
   constructor () {
-    super()
     this.id = uuidv4()
   }
 }
