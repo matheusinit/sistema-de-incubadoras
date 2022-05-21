@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Container, Row, Col, Form } from 'react-bootstrap'
 import Card from '../../components/Card'
-import { Link } from 'react-router-dom'
 import { Line } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
@@ -11,7 +10,7 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 } from 'chart.js'
 import './dashboard.css'
 import LineChartMonthly from '../../components/LineChartMonthly'
@@ -24,7 +23,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-);
+)
 
 const Dashboard: React.FC = () => {
   const options = {
@@ -62,7 +61,7 @@ const Dashboard: React.FC = () => {
           <Button variant='primary' className="fw-bold me-3">Conta</Button>
           <Button variant='primary' className="fw-bold me-3">Incubadoras</Button>
           <Button variant='danger' className="fw-bold">Sair</Button>
-        </nav>     
+        </nav>
       </header>
 
       <main className="px-4 pb-5">
@@ -88,8 +87,6 @@ const Dashboard: React.FC = () => {
             <LineChartMonthly />
           </Col>
         </Row>
-
-        
 
       </main>
     </Container>

@@ -2,12 +2,12 @@ import React, { ChangeEvent, useState } from 'react'
 import { Container, Form, Button, Row, Col, InputGroup } from 'react-bootstrap'
 
 const Registration: React.FC = () => {
-  const [partners, setPartner] = useState([{ name: "" }])
-  const [partnerText, setPartnerText] = useState("")
+  const [partners, setPartner] = useState([{ name: '' }])
+  const [partnerText, setPartnerText] = useState('')
 
   const handleAddPartner = () => {
     setPartner([...partners, { name: partnerText }])
-    setPartnerText("")
+    setPartnerText('')
   }
 
   const handleChangeOfPartner = (event: ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +29,7 @@ const Registration: React.FC = () => {
       <Form>
         <fieldset className="mb-5">
           <legend>Dados</legend>
-          
+
           <Row>
             <Col sm={12} md={6}>
               <Form.Group className="mb-3">
@@ -37,7 +37,7 @@ const Registration: React.FC = () => {
                 <Form.Control type="text" placeholder="31.869.716/0001-53" />
               </Form.Group>
             </Col>
-            
+
             <Col sm={12} md={6}>
               <Form.Group className="mb-3">
                 <Form.Label>Razão social</Form.Label>
@@ -53,7 +53,7 @@ const Registration: React.FC = () => {
                 <Form.Control type="text" placeholder="Nome fantasia" />
               </Form.Group>
             </Col>
-            
+
             <Col sm={12} md={6}>
               <Form.Group className="mb-3">
                 <Form.Label>Área de atuação</Form.Label>
@@ -69,7 +69,7 @@ const Registration: React.FC = () => {
         </fieldset>
 
         <fieldset className="mb-5">
-          <legend>Financeiro</legend> 
+          <legend>Financeiro</legend>
 
           <Row>
             <Col sm={12} md={4}>
@@ -106,7 +106,7 @@ const Registration: React.FC = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Nome dos sócios</Form.Label>
                 <InputGroup className="mb-3">
-                  <Form.Control type="text" aria-describedby="add-button" value={partnerText}  onChange={handleChangeOfPartner} />
+                  <Form.Control type="text" aria-describedby="add-button" value={partnerText} onChange={handleChangeOfPartner} />
                   <Button variant="outline-secondary" id="add-button" onClick={handleAddPartner}>Adicionar</Button>
                 </InputGroup>
               </Form.Group>
@@ -114,19 +114,17 @@ const Registration: React.FC = () => {
           </Row>
 
           {partners.map((partner, index) => {
-            if (partner.name !== "") {
-              return (
-                <Form.Group key={index}>
-                  <Form.Label>Novo sócio</Form.Label>
-                  <InputGroup className="mb-3">
-                    <Form.Control type="text" name="name" placeholder="Nome do sócio" value={partner.name} disabled />
-                    {partners.length - 1 === index && <Button variant="outline-warning" onClick={handlePopPartner}>Remover</Button> }
-                  </InputGroup>
-                </Form.Group>
-              )
-            }
-          })}
-        </fieldset>        
+            return partner.name !== '' &&
+              (<Form.Group key={index}>
+              <Form.Label>Novo sócio</Form.Label>
+              <InputGroup className="mb-3">
+                <Form.Control type="text" name="name" placeholder="Nome do sócio" value={partner.name} disabled />
+                {partners.length - 1 === index && <Button variant="outline-warning" onClick={handlePopPartner}>Remover</Button> }
+              </InputGroup>
+            </Form.Group>)
+          }
+          )}
+        </fieldset>
 
         <fieldset className="mb-5">
           <legend>Contato</legend>
@@ -162,7 +160,7 @@ const Registration: React.FC = () => {
               </Form.Group>
             </Col>
           </Row>
-          
+
           <Row>
             <Col sm={12} md={6}>
               <Form.Group className="mb-3">
