@@ -1,3 +1,5 @@
 import { RegisterCompanyController } from '../useCases/company/registerCompany/RegisterCompanyController'
+import { Encrypter } from '../utils/Encrypter'
 
-export const registerCompanyController = new RegisterCompanyController()
+const encrypter = new Encrypter(12)
+export const registerCompanyController = new RegisterCompanyController(encrypter)
