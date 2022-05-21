@@ -29,8 +29,8 @@ const LineChartMonthly: React.FC = () => {
   }
 
   return (
-    <div>
-      <Line data={data} options={options} className="w-100" />
+    <div className='w-100'>
+      <Line data={data} options={options} className='w-100' />
     </div>
   )
 }
