@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Container, Row, Col, Form } from 'react-bootstrap'
 import Card from '../../components/Card'
-import { Line } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,11 +8,11 @@ import {
   PointElement,
   LineElement,
   Title,
-  Tooltip,
-  Legend
+  Tooltip
 } from 'chart.js'
 import './dashboard.css'
 import LineChartMonthly from '../../components/LineChartMonthly'
+import LineChartYearly from '../../components/LineChartYearly'
 
 ChartJS.register(
   CategoryScale,
@@ -21,37 +20,10 @@ ChartJS.register(
   PointElement,
   LineElement,
   Title,
-  Tooltip,
-  Legend
+  Tooltip
 )
 
 const Dashboard: React.FC = () => {
-  const options = {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Faturamento anual de todas empresas'
-      },
-      legend: {
-        display: false
-      }
-    },
-    maintainAspectRatio: false
-  }
-  const labels = [2019, 2020, 2021]
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: 'Faturamento',
-        data: [25000, 22000, 30000],
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)'
-      }
-    ]
-  }
-
   return (
     <Container className="p-0" fluid>
       <header className="d-flex justify-content-between align-items-center py-2 px-3 mb-4">
@@ -73,9 +45,7 @@ const Dashboard: React.FC = () => {
 
         <Row>
           <Col className="d-flex align-items-end">
-            <div className="w-100">
-              <Line data={data} options={options} className="w-100" />
-            </div>
+            <LineChartYearly />
           </Col>
           <Col className="d-flex flex-column align-items-center">
             <Form.Select className="mb-3 w-50">
