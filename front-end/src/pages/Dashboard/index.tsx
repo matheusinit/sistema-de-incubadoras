@@ -65,11 +65,21 @@ const Dashboard: React.FC = () => {
           </div>
         </aside>
 
-        <Container className="p-0 me-0 flex-grow-1 overflow-auto" fluid>
-          <main className="px-4 bg-light pt-4 h-100">
-            <div className="d-flex justify-content-between mb-3">
-              <Card />
-            </div>
+        <Container className="p-0 bg-light flex-grow-1 overflow-auto" fluid>
+          <main className="px-4 pt-4 h-100">
+            <Row className="mb-3">
+              <Col md="4" className="mb-sm-2 mb-md-0">
+                <Card />
+              </Col>
+
+              <Col md="4" className="mb-sm-2 mb-md-0">
+                <Card />
+              </Col>
+
+              <Col md="4" className="mb-sm-2 mb-md-0">
+                <Card />
+              </Col>
+            </Row>
 
             <section className="bg-white px-4 py-4 rounded border mb-3">
               <h3 className="mb-3 fw-normal">Gráficos</h3>
@@ -88,25 +98,6 @@ const Dashboard: React.FC = () => {
                 </Col>
               </Row>
             </section>
-
-            <section className="bg-white px-4 py-4 rounded border mb-3">
-              <h3 className="mb-3 fw-normal">Gráficos</h3>
-              <Row>
-                <Col className="d-flex align-items-end">
-                  <LineChartYearly />
-                </Col>
-                <Col className="d-flex flex-column align-items-center">
-                  <Form.Select className="mb-3 w-50">
-                    <option value="2021">2021</option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                  </Form.Select>
-
-                  <LineChartMonthly />
-                </Col>
-              </Row>
-            </section>
-
           </main>
         </Container>
       </Container>
