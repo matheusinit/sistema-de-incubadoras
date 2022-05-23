@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm'
 import { User } from '../../../entities/User'
 import { v4 as uuidv4 } from 'uuid'
+import bcrypt from 'bcrypt'
 
 export class CreateUserTable1653151762713 implements MigrationInterface {
   public async up (queryRunner: QueryRunner): Promise<void> {
@@ -30,7 +31,7 @@ export class CreateUserTable1653151762713 implements MigrationInterface {
     await queryRunner.manager.createQueryBuilder().insert().into(User).values({
       id: uuidv4(),
       login: 'admin',
-      password: 'password',
+      password: bcrypt.hashSync('password', 12),
       isAdmin: true
     }).execute()
   }
