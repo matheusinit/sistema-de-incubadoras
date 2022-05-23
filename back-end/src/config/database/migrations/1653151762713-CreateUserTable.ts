@@ -1,4 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm'
+import { User } from '../../../entities/User'
+import { v4 as uuidv4 } from 'uuid'
 
 export class CreateUserTable1653151762713 implements MigrationInterface {
   public async up (queryRunner: QueryRunner): Promise<void> {
@@ -17,9 +19,20 @@ export class CreateUserTable1653151762713 implements MigrationInterface {
         {
           name: 'password',
           type: 'varchar'
+        },
+        {
+          name: 'isAdmin',
+          type: 'boolean'
         }
       ]
     }))
+
+    await queryRunner.manager.createQueryBuilder().insert().into(User).values({
+      id: uuidv4(),
+      login: 'admin',
+      password: 'password',
+      isAdmin: true
+    }).execute()
   }
 
   public async down (queryRunner: QueryRunner): Promise<void> {
