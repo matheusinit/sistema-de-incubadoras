@@ -5,5 +5,5 @@ export const isAuthenticated = async (request: Request, response: Response, next
     return next(null)
   }
 
-  return response.status(403).send({ error: 'Needs authentication' })
+  return response.status(401).send({ error: 'Needs authentication' })
 }
