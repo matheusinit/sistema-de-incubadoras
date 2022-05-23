@@ -10,4 +10,8 @@ export class Encrypter {
   async encrypt (data: string): Promise<string> {
     return await bcrypt.hash(data, this.salt)
   }
+
+  async compare (hash: string, data: string): Promise<boolean> {
+    return await bcrypt.compare(data, hash)
+  }
 }

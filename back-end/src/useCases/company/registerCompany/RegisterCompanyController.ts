@@ -2,15 +2,9 @@ import { Request, Response } from 'express'
 import { AppDataSource } from '../../../data-source'
 import { Company } from '../../../entities/Company'
 import { User } from '../../../entities/User'
-import { Encrypter } from '../../../utils/Encrypter'
+import bcrypt from 'bcrypt'
 
 export class RegisterCompanyController {
-  private readonly encrypter: Encrypter
-
-  constructor (encrypter: Encrypter) {
-    this.encrypter = encrypter
-  }
-
   async handle (request: Request, response: Response): Promise<Response> {
     const { password, ...companyData } = request.body
 
@@ -20,11 +14,12 @@ export class RegisterCompanyController {
 
     const user = new User()
 
-    const encryptedPassword = this.encrypter.encrypt(password)
+    const encryptedPassword = await bcrypt.hash(password, 12)
 
     Object.assign(user, { login: company.cnpj, password: encryptedPassword })
 
     await AppDataSource.manager.save(company)
+    await AppDataSource.manager.save(user)
 
     return response.status(200).json(company)
   }
