@@ -1,7 +1,12 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 
-const LineChartYearly: React.FC = () => {
+interface Chart {
+  labels: string[]
+  dataInput: any[]
+}
+
+const LineChartYearly: React.FC<Chart> = ({ labels, dataInput }) => {
   const options = {
     responsive: true,
     plugins: {
@@ -15,13 +20,13 @@ const LineChartYearly: React.FC = () => {
     },
     maintainAspectRatio: false
   }
-  const labels = [2019, 2020, 2021]
+
   const data = {
     labels,
     datasets: [
       {
         label: 'Faturamento',
-        data: [25000, 22000, 30000],
+        data: dataInput,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)'
       }

@@ -1,7 +1,12 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 
-const LineChartMonthly: React.FC = () => {
+interface Chart {
+  labels: string[]
+  dataInput: any[]
+}
+
+const LineChartMonthly: React.FC<Chart> = ({ labels, dataInput }) => {
   const options = {
     responsive: true,
     plugins: {
@@ -15,13 +20,14 @@ const LineChartMonthly: React.FC = () => {
     },
     maintainAspectRatio: false
   }
-  const labels = ['Outubro', 'Novembro', 'Dezembro']
+  // const labels = ['Outubro', 'Novembro', 'Dezembro']
   const data = {
     labels,
     datasets: [
       {
         label: 'Faturamento mensal',
-        data: [4700, 4200, 4400],
+        data: dataInput,
+        // data: [4700, 4200, 4400],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)'
       }
